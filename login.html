@@ -22,7 +22,7 @@
         </div>
         <div class="mx-auto" style="width: fit-content;">
             <button type="submit" class="btn btn-primary ">Login</button>
-            <a href="register.html"><button type="button" class="btn btn-primary">Register</button></a>
+            <a href="./register.html"><button type="button" class="btn btn-primary">Register</button></a>
         </div>
     </form>
 
@@ -74,7 +74,7 @@
                             lastname: snapshot.val().lastname
                         }));
                         sessionStorage.setItem('user-creds', JSON.stringify(credentials.user));
-                        window.location.href = 'index.html';
+                        window.location.href = './dashboard.html';
                     }
                 })
             } ) 
