@@ -12,40 +12,91 @@
 </head>
 
 <body>
-    <div class="cont ms-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <form class="d-flex float-end">
+                <button type="button" class="btn btn-primary" id="signoutbutton">Log Out</button>
+            </form>
+        </div>
+    </nav>
+    <div class="cont ms-4 mt-4">
         <h1 id="greet"></h1>
         <h2 id="msg"></h2>
-        <button type="button" class="btn btn-primary" id="signoutbutton">Log Out</button>
+
     </div>
+
+    <section class="badges">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="./earlybird.gif" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Early Bird</h5>
+                            <h6 class="card-title">₹1/- Only</h6>
+                            <a href="#" class="btn btn-primary" id="buyearlybird">Buy</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="./nightowl.gif" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Night Owl</h5>
+                            <h6 class="card-title">₹1/- Only</h6>
+                            <a href="#" class="btn btn-primary" id="buynightowl">Buy</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="./Trust Me, I'm an.gif" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Trust Me, I'm an Engineer</h5>
+                            <h6 class="card-title">₹1/- Only</h6>
+                            <a href="#" class="btn btn-primary" id="buyengineer">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <script>
-        let UserCreds = JSON.parse(sessionStorage.getItem('user-creds'));
-        let UserInfo = JSON.parse(sessionStorage.getItem('user-info'));
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
 
-        let msgHead = document.getElementById('msg');
-        let greetHead = document.getElementById('greet');
-        let signoutButton = document.getElementById('signoutbutton');
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAVNio0Mf21sxjq5zjR3Cou1F0-fy_fGao",
+            authDomain: "digi-stick.firebaseapp.com",
+            databaseURL: "https://digi-stick-default-rtdb.firebaseio.com",
+            projectId: "digi-stick",
+            storageBucket: "digi-stick.appspot.com",
+            messagingSenderId: "451586743771",
+            appId: "1:451586743771:web:acf64e6759f9098b969bfe",
+            measurementId: "G-WQHZ9018ZE"
+        };
 
-        greetHead.innerText = `Welcome ${UserInfo.firstname}`;
-        msgHead.innerText = `logged in with ${UserCreds.email}`;
-
-        Signout = () => {
-            sessionStorage.removeItem('user-creds');
-            sessionStorage.removeItem('user-info');
-            window.location.href = "login.html";
-        }
-
-        chkCreds = () => {
-            if (!sessionStorage.getItem('user-creds')) {
-                window.location.href = "login.html";
-            }
-        }
-        window.addEventListener('load', chkCreds);
-        signoutbutton.addEventListener('click', Signout);
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
     </script>
+
+    <!-- Add your dashboard.js script here -->
+    <script type="module" src="./dashboard.js"></script>
 </body>
 
 </html>
